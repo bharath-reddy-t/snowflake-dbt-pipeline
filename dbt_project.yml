@@ -36,4 +36,8 @@ models:
     datalake:
       +materialized: table
       +schema: raw_poc
+    
+    consumption:
+      +materialized: table
+      +schema: reporting_poc
 
