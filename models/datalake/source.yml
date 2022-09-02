@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: poc
+    schema: landing_poc
+    tables: 
+      - name: landing_hz_parties_v2
