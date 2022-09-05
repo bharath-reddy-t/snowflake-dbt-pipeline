@@ -7,10 +7,9 @@
 
 with source_cte as (
     select *
-      from {{ source('poc', 'temp_parties') }}
+      from {{ source('poc', 'landing_hz_parties_v2') }}
 )
 select *,
-       current_user() as created 
        current_timestamp() as ingestion_timestamp
   from source_cte
 
