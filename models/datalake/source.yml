@@ -5,3 +5,4 @@ sources:
     schema: landing_poc
     tables: 
       - name: landing_hz_parties_v2
+      - name: temp_parties
