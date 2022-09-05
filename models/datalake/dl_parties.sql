@@ -1,7 +1,8 @@
 {{
     config(
         materialized='incremental',
-        unique_key='PARTY_ID'
+        unique_key='PARTY_ID',
+        post_hook = "truncate table {{ source('poc', 'temp_parties') }}"
     )
 }}
 
