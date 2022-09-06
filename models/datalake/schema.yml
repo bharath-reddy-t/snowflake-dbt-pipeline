@@ -1,0 +1,11 @@
+version: 2
+
+models:
+    - name: dl_parties
+      description: Parties data in datalake layer which is coming from landing layer.
+      columns:
+        - name: party_id
+          description: Primary key for parties table.
+          tests:
+              - unique
+              - not_null
