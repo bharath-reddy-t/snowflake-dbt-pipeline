@@ -10,7 +10,8 @@ with source_cte as (
       from {{ source('poc', 'landing_hz_parties_v2') }}
 )
 select *,
-       current_timestamp() as ingestion_timestamp
+       current_timestamp() as ingestion_timestamp,
+       current_user() as dl_last_updated_by
   from source_cte
 
 {% if is_incremental() %}
