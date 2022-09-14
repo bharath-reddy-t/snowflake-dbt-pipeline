@@ -19,7 +19,7 @@ final as (
              when day_ofweek = 4 then 'Thursday'
              when day_ofweek = 5 then 'Friday'
              when day_ofweek = 6 then 'Saturday'
-            end as day_of_week,
+           end as day_of_week,
            quarter(my_date) as quarter
       from date_cte
 )
