@@ -1,7 +1,7 @@
 with date_cte as (
-    select DATEADD(DAY, SEQ4(), '2015-04-01') AS my_date
+    select DATEADD(DAY, SEQ4(), '2008-10-01') AS my_date
       from TABLE(GENERATOR(ROWCOUNT=>20000))
-     where my_date <= '2022-03-31'
+     where my_date <= '2022-09-14'
 ),
 
 final as ( 
