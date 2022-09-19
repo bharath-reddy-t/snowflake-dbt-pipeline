@@ -1,11 +1,11 @@
 version: 2
 
 models:
-    - name: dl_parties
-      description: Parties data in datalake layer which is coming from landing layer. This is an incremental model with SCD Type 1 data.
+    - name: dl_accounts
+      description: Accounts data in datalake layer which is coming from raw layer. This is an incremental model with SCD Type 1 data.
       columns:
-        - name: party_id
-          description: Primary key for parties table.
+        - name: id
+          description: Primary key for accounts table.
           tests:
               - unique
               - not_null

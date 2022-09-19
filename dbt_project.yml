@@ -33,11 +33,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   odin_analytics:
+    +transient: False
     datalake:
       +materialized: table
-      +schema: raw_poc
+      +schema: landing_sfdc
     
     consumption:
       +materialized: table
-      +schema: reporting_poc
+      +schema: dim
 
