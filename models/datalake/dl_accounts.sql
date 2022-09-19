@@ -1,13 +1,13 @@
 {{
     config(
-        materialized='incremental',
-        unique_key='ID'
+        materialized = 'incremental',
+        unique_key = 'ID'
     )
 }}
 
 with source_cte as (
     select * 
-      from {{ source('poc', 'landing_sf_account_v2') }}
+      from {{ source('poc', 'raw_sf_account') }}
 )
 
 select *,

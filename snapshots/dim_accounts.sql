@@ -2,14 +2,17 @@
 
     {{
         config(
-            target_schema = 'reporting_poc',
+            target_schema = 'dim',
             unique_key = 'ID',
             strategy = 'timestamp',
             updated_at = 'dl_last_update_date',
-            invalidate_hard_deletes = True
+            invalidate_hard_deletes = True,
+            transient = False
         )
     }}
 
-    select * from {{ ref('dl_accounts') }}
+    select *,
+           row_number() over(order by ID) as surrogate_key
+      from {{ ref('dl_accounts') }}
 
 {% endsnapshot %}
