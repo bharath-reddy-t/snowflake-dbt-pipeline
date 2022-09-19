@@ -2,9 +2,6 @@ version: 2
 
 sources:
   - name: poc
-    schema: landing_poc
+    schema: raw_boomi
     tables: 
-      - name: landing_hz_parties_v2
-      - name: temp_parties
-      - name: landing_sf_account_v2
-      - name: temp_accounts
+      - name: raw_sf_account
