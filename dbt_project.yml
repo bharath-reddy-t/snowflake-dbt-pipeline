@@ -42,3 +42,5 @@ models:
       +materialized: table
       +schema: dim
 
+snapshots:
+  +transient: False

@@ -6,8 +6,7 @@
             unique_key = 'ID',
             strategy = 'timestamp',
             updated_at = 'dl_last_update_date',
-            invalidate_hard_deletes = True,
-            transient = False
+            invalidate_hard_deletes = True
         )
     }}
 
