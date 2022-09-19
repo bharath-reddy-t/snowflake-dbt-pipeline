@@ -4,12 +4,13 @@ sources:
   - name: poc
     schema: raw_boomi
     tables: 
-<<<<<<< HEAD
       - name: landing_hz_parties_v2
       - name: temp_parties
       - name: landing_sf_account_v2
       - name: temp_accounts
-    
-=======
       - name: raw_sf_account
->>>>>>> 059b2e9e83eaabce9e91a6a7564120f22b23b4c7
+      
+  - name: poc_fact
+    schema: RAW_SFDC_SYNCOUT
+    tables: 
+       - name: test_SF_Oppurtunity
