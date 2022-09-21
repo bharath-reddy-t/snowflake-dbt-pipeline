@@ -9,3 +9,14 @@ models:
           tests:
               - unique
               - not_null
+
+    - name: dl_opportunity
+      description: The data from raw_sf_opportunity table is loaded into the datalake layer with incremental load which is SCD Type 1.
+      columns:
+        - name: id
+          description: Primary key for opportunity table.
+          tests:
+              - unique
+              - not_null
+        - name: accountid
+          description: Account ID which is similar to ID in the accounts table

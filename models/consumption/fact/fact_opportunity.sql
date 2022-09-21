@@ -17,6 +17,7 @@ opp as(
 ),
 
 fact_opportunity as(
+
     select id as opportunity_id,
            a.Account_key as Account_key,
            d.date_key as closedate_key,
@@ -40,6 +41,7 @@ fact_opportunity as(
       left 
       join accounts a 
         on a.account_id = o.accountid 
+
 )
 
 select *
