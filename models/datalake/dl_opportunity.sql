@@ -9,7 +9,10 @@ with source_cte as (
     select  cast(CLOSEDATE AS DATE) as CLOSEDATE,
             cast(CREATEDDATE as datetime) as CREATEDDATE,
             cast(LASTMODIFIEDDATE as datetime) as LASTMODIFIEDDATE,
-         {{ dbt_utils.star(from=source('poc', 'raw_sf_opportunity') , except=["CLOSEDATE","CREATEDDATE","LASTMODIFIEDDATE"]) }}
+         {{ dbt_utils.star(from=source('poc', 'raw_sf_opportunity') ,
+          except=["CLOSEDATE",
+                  "CREATEDDATE",
+                  "LASTMODIFIEDDATE"]) }}
       from {{ source('poc', 'raw_sf_opportunity') }}
 )
  

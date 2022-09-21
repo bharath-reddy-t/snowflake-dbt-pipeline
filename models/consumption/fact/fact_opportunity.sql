@@ -32,9 +32,12 @@ fact_opportunity as(
             dl_lastupdateddate,
             dl_lastupdatedby
        from opp o
-       left join date d on d.date=o.closedate 
-       left join date cd on cd.date=o.createddate
-       left join accounts a on a.acc_id=o.accountid 
+       left join date d on
+                 d.date=o.closedate 
+       left join date cd on 
+                 cd.date=o.createddate
+       left join accounts a on 
+                 a.acc_id=o.accountid 
 )
 
 select 
