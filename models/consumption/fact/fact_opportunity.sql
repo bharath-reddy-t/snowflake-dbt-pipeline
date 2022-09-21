@@ -17,7 +17,7 @@ opp as(
 ),
 
 fact_opportunity as(
-    select id,
+    select id as opportunity_id,
            a.Account_key as Account_key,
            d.date_key as closedate_key,
            cd.date_key as createddate_key,
