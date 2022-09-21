@@ -6,7 +6,11 @@
 }}
 
 with source_cte as (
-    select *
+  
+    select {{ dbt_utils.star(from=source('poc', 'raw_sf_account') , except=["CREATEDDATE","LASTMODIFIEDDATE","LastViewedDate"]) }},
+           try_cast(CREATEDDATE as datetime) as CREATEDDATE,
+           try_cast(LASTMODIFIEDDATE as datetime) as LASTMODIFIEDDATE,
+           try_cast(LastViewedDate as datetime) as LastViewedDate
       from {{ source('poc', 'raw_sf_account') }}
 )
 
