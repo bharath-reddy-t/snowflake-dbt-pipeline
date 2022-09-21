@@ -1,5 +1,5 @@
 with accounts as(
-    select id as account_id,
+    select account_id,
            Account_key 
       from {{ ref('dim_accounts') }} 
      where DBT_VALID_TO IS NULL
