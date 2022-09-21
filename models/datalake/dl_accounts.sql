@@ -6,7 +6,7 @@
 }}
 
 with source_cte as (
-    select * 
+    select *
       from {{ source('poc', 'raw_sf_account') }}
 )
 
