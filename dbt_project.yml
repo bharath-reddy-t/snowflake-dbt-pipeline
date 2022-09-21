@@ -40,15 +40,11 @@ models:
     
     consumption:
       +materialized: table
-<<<<<<< HEAD
-      +schema: dim
-   
-=======
+
       dim:
         +schema: dim
       fact:
         +schema: fact
->>>>>>> 1c25cdd83197ebe52200fd3c3cd97446cd209659
 
 snapshots:
   +transient: False
