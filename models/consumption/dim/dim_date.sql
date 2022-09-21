@@ -1,9 +1,3 @@
-{{
-  config(
-    materialized='table'
-  )
-}}
-
 with date_cte as (
     select DATEADD(DAY, SEQ4(), '2008-10-01') AS my_date
       from TABLE(GENERATOR(ROWCOUNT=>20000))

@@ -40,7 +40,10 @@ models:
     
     consumption:
       +materialized: table
-      +schema: dim
+      dim:
+        +schema: dim
+      fact:
+        +schema: fact
 
 snapshots:
   +transient: False

@@ -11,7 +11,7 @@
     }}
 
     select *,
-           row_number() over(order by ID) as surrogate_key
+           row_number() over(order by ID) as Account_key
       from {{ ref('dl_accounts') }}
 
 {% endsnapshot %}
