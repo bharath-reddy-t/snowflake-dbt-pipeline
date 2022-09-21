@@ -40,7 +40,6 @@ models:
     
     consumption:
       +materialized: table
-
       dim:
         +schema: dim
       fact:
