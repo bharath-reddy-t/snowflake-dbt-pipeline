@@ -41,4 +41,5 @@ models:
     consumption:
       +materialized: table
       +schema: dim
+   
 

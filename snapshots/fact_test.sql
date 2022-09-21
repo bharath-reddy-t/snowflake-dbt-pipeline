@@ -4,7 +4,7 @@
             target_schema = 'fact',
             unique_key = 'ID',
             strategy = 'timestamp',
-            updated_at = 'dl_last_update_date',
+            updated_at = 'do_last_update_date',
             invalidate_hard_deletes = True
         )
     }}
@@ -16,15 +16,18 @@ date as(
     select date_key,date from {{ ref('dim_date') }}
 ),
 opp as(
-    select * from {{ ref('temp_oppurtunity') }}
+    select * from {{ ref('temp_opp') }}
 ),
 fact_test as(
     select
       date_key,
-      id
-         from opp o
-       left join date d on d.date=o.closedate
-       left join accounts a on a.acc_id=o.accountid
+      id,
+      acc_id,
+      amount,
+      do_last_update_date
+       from opp o
+       left join date d on d.date=o.closedate and d.date=o.createddate
+       left join accounts a on a.acc_id=o.accountid 
 )
 select * from fact_test
 {% endsnapshot %}
