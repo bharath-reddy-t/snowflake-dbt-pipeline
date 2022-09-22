@@ -7,14 +7,13 @@
  
 with source_cte as (
 
-    select  cast(CLOSEDATE AS DATE) as CLOSEDATE,
-            cast(CREATEDDATE as datetime) as CREATEDDATE,
-            cast(LASTMODIFIEDDATE as datetime) as LASTMODIFIEDDATE,
-         {{ dbt_utils.star(from=source('poc', 'raw_sf_opportunity') ,
+    select  {{ dbt_utils.star(from=source('poc', 'raw_sf_opportunity') ,
           except=["CLOSEDATE",
                   "CREATEDDATE",
-                  "LASTMODIFIEDDATE"]) }}
-
+                  "LASTMODIFIEDDATE"]) }},
+    try_cast(CLOSEDATE AS DATE) as CLOSEDATE,
+            try_cast(CREATEDDATE as datetime) as CREATEDDATE,
+            try_cast(LASTMODIFIEDDATE as datetime) as LASTMODIFIEDDATE
       from {{ source('poc', 'raw_sf_opportunity') }}
 )
  

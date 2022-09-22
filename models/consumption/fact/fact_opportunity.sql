@@ -44,5 +44,6 @@ fact_opportunity as(
 
 )
 
+
 select *
   from fact_opportunity
