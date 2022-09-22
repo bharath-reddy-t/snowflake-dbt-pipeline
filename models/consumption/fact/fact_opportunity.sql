@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized = 'incremental',
+        unique_key = 'opportunity_id'
+    )
+}}
+
 with accounts as(
     select account_id,
            Account_key 
@@ -29,8 +36,9 @@ fact_opportunity as(
            CB_ORACLE_ACCOUNT_NUMBER__C,
            MIGRATION_ID__C,
            QC_TOTAL__C,
-           dl_lastupdateddate,
-           dl_lastupdatedby
+           dl_lastupdateddate ,
+           current_timestamp() as fct_lastupdatedate,
+           current_user() as fct_lastupdatedby     
       from opp o
       left 
       join dates d 
@@ -44,6 +52,14 @@ fact_opportunity as(
 
 )
 
-
 select *
   from fact_opportunity
+  
+{% if is_incremental() %}
+
+ where dl_lastupdateddate > (select max(dl_lastupdateddate) from {{ this }}) 
+    or  opportunity_id not in (select opportunity_id from {{ this }})
+ 
+{% endif %}
+ 
+
