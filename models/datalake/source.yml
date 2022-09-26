@@ -8,4 +8,5 @@ sources:
       - name: raw_sf_account
       - name: raw_sf_opportunity
       - name: temp_opportunity
+      - name: temp_account
 
