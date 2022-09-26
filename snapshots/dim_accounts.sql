@@ -12,7 +12,7 @@
     }}
 
     select ID as account_id,
-           row_number() over(order by account_id) as Account_key,
+           hash(account_id) as Account_key,
            {{ dbt_utils.star(from=ref('dl_accounts') , 
               except=['ID','OWNERID','CREATEDBYID','LASTMODIFIEDBYID'] ) 
            }}
