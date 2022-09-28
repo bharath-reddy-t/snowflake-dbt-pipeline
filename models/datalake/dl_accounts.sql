@@ -6,14 +6,16 @@
     )
 }}
 
-
 with source_cte as (
-  
-    select {{ dbt_utils.star(from=source('poc', 'temp_account') , except=["CREATEDDATE","LASTMODIFIEDDATE","LastViewedDate"]) }},
+
+    select {{ dbt_utils.star(from=source('poc', 'raw_sf_account'), 
+              except=["CREATEDDATE","LASTMODIFIEDDATE","LastViewedDate"] ) 
+           }},
+
            try_cast(CREATEDDATE as datetime) as CREATEDDATE,
            try_cast(LASTMODIFIEDDATE as datetime) as LASTMODIFIEDDATE,
            try_cast(LastViewedDate as datetime) as LastViewedDate
-    from {{ source('poc', 'temp_account') }}
+    from {{ source('poc', 'raw_sf_account') }}
 ),
 
 cte as(
@@ -30,9 +32,11 @@ cte as(
 {% endif %}
 
 {% if is_incremental() %}
+
     select *  from cte
     where 
        (LASTMODIFIEDDATE > (select max(LASTMODIFIEDDATE) from {{ this }}) 
        or ID not in (select ID from {{ this }}) ) and 
        rownumber =1
+
 {% endif %}

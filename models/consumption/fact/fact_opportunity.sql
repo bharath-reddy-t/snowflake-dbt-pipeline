@@ -24,9 +24,8 @@ opp as(
 ),
 
 fact_opportunity as(
-
     select id as opportunity_id,
-           a.Account_key as Account_key,
+           coalesce(a.Account_key, -99) as Account_key,
            d.date_key as closedate_key,
            cd.date_key as createddate_key,
            amount,
@@ -49,7 +48,6 @@ fact_opportunity as(
       left 
       join accounts a 
         on a.account_id = o.accountid 
-
 )
 
 select *
@@ -58,7 +56,7 @@ select *
 {% if is_incremental() %}
 
  where dl_lastupdateddate > (select max(dl_lastupdateddate) from {{ this }}) 
-    or  opportunity_id not in (select opportunity_id from {{ this }})
+    or opportunity_id not in (select opportunity_id from {{ this }})
  
 {% endif %}
  
