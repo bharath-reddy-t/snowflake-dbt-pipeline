@@ -1,7 +1,8 @@
 {{
     config(
         materialized = 'incremental',
-        unique_key = 'opportunity_id'
+        unique_key = 'opportunity_id',
+        post_hook = update_fct('Account_key')
     )
 }}
 
