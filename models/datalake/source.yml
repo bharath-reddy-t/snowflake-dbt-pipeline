@@ -9,4 +9,9 @@ sources:
       - name: raw_sf_opportunity
       - name: temp_opportunity
       - name: temp_account
+  - name: scd3
+    database: odin_dev
+    schema: landing_sfdc
+    tables:
+      - name: temp_parties
 
