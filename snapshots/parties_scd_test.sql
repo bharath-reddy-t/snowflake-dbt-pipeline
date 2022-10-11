@@ -9,6 +9,6 @@
         )
     }}
 
-    select * from {{ source('scd3', 'temp_parties') }}
+    select * from {{ source('poc2', 'temp_parties') }}
     
  {% endsnapshot %}
