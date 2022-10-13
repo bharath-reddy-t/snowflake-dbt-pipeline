@@ -1,4 +1,4 @@
 {% macro next(column_name) %}
-     Lead({{column_name}}, 1, NULL) OVER(
-       ORDER BY created_date ASC) 
+     lead({{column_name}}) over(partition by deal_id
+       order by created_date asc) 
 {% endmacro %}
